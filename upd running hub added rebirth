@@ -1,10 +1,10 @@
---botting the  lib 
+-- existing code
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
---window
+-- window
 local Window = OrionLib:MakeWindow({Name = "All universe hub", HidePremium = false, IntroText = "All unniverse hub", SaveConfig = true, ConfigFolder = "OrionTest"})
 
--- tab
+-- tabs
 local mainTab = Window:MakeTab({
   Name = "farm",
   Icon = "rbxassetid://4483345998",
@@ -23,8 +23,7 @@ local tpTab = Window:MakeTab({
   PremiumOnly = false
 })
 
-
---section
+-- sections
 local Section = mainTab:AddSection({
   Name = "farming section!"
 })
@@ -37,8 +36,7 @@ local Section = tpTab:AddSection({
   Name = "teleports"
 })
 
-
---values
+-- values
 getgenv().autokick = false
 getgenv().automoney = false
 getgenv().autoegg1 = false
@@ -48,7 +46,7 @@ getgenv().autoegg4 = false
 getgenv().autoegg5 = false
 getgenv().autorebirth = false
 
---functions
+-- functions
 function dokick()
   while getgenv().autokick == true do
     local args = {
@@ -58,7 +56,7 @@ function dokick()
     game:GetService("ReplicatedStorage").Remotes.Click:FireServer(unpack(args))
     task.wait(0.1)
   end 
-  end
+end
 
 function domoney()
   while getgenv().automoney == true do
@@ -69,8 +67,8 @@ function domoney()
 
     game:GetService("ReplicatedStorage").Remotes.Money:FireServer(unpack(args))
     task.wait(0.1)
-    end
   end
+end
 
 function hatchegg1()
   while getgenv().autoegg1 == true do
@@ -153,7 +151,7 @@ function dorebirth()
   end
 end
 
---notification
+-- notification
 OrionLib:MakeNotification({
   Name = "Exeuted!",
   Content = "join our discord for more scripts!",
@@ -161,7 +159,7 @@ OrionLib:MakeNotification({
   Time = 5
 })
 
---buttons
+-- buttons
 mainTab:AddButton({
   Name = "claim daily gift!!",
   Callback = function()
@@ -189,22 +187,31 @@ mainTab:AddButton({
 mainTab:AddButton({
   Name = "infiniteyield(for speed)!",
   Callback = function()
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+      loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
           print("button pressed")
     end    
 })
---teleport buttons
-tpTab:AddButton({
-  Name = "teleport to end  of the world ur in!",
+
+mainTab:AddButton({
+  Name = "Copy Discord Link",
   Callback = function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(101761.82, 25.8693676, -145.287994, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+      setclipboard("https://discord.gg/88dfBYQk")
+      print("Discord link copied to clipboard")
+  end    
+})
+
+-- teleport buttons
+tpTab:AddButton({
+  Name = "teleport to end of the world ur in!",
+  Callback = function()
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(101761.82, 25.8693676, -145.287994, 1, 0, 0, 0, 1, 0, 0, 0, 1)
       wait()
           print("button pressed")
     end    
 })
 
 tpTab:AddButton({
-  Name = "teleport to lava  world!",
+  Name = "teleport to lava world!",
   Callback = function()
       local args = {
         [1] = "Teleport",
@@ -243,7 +250,7 @@ tpTab:AddButton({
 })
 
 tpTab:AddButton({
-  Name = "teleport to jungle world !",
+  Name = "teleport to jungle world!",
   Callback = function()
       local args = {
         [1] = "Teleport",
@@ -254,6 +261,7 @@ tpTab:AddButton({
           print("button pressed")
     end    
 })
+
 -- farm toggles 
 mainTab:AddToggle({
   Name = "auto train legs!",
@@ -266,38 +274,37 @@ mainTab:AddToggle({
   end    
 })
 
-
 mainTab:AddToggle({
   Name = "get 3,000,000 money!(will reset ur power)",
   Default = false,
   Callback = function(bool)
-    getgenv().automoney = bool
+      getgenv().automoney = bool
       if bool then 
         domoney()
-        end
+      end
   end    
 })
 
-
---egg toggles
+-- egg toggles
 eggTab:AddToggle({
   Name = "auto hatch 2k egg",
   Default = false,
   Callback = function(bool)
-    getgenv().autoegg1 = bool
+      getgenv().autoegg1 = bool
       if bool then 
         hatchegg1()
-        end
+      end
   end    
 })
+
 eggTab:AddToggle({
   Name = "auto hatch 250k egg",
   Default = false,
   Callback = function(bool)
-    getgenv().autoegg2 = bool
+      getgenv().autoegg2 = bool
       if bool then 
         hatchegg2()
-        end
+      end
   end    
 })
 
@@ -305,10 +312,10 @@ eggTab:AddToggle({
   Name = "auto hatch 10m egg",
   Default = false,
   Callback = function(bool)
-    getgenv().autoegg3 = bool
+      getgenv().autoegg3 = bool
       if bool then 
         hatchegg3()
-        end
+      end
   end    
 })
 
@@ -316,24 +323,12 @@ eggTab:AddToggle({
   Name = "auto hatch 1.4b egg",
   Default = false,
   Callback = function(bool)
-    getgenv().autoegg4 = bool
+      getgenv().autoegg4 = bool
       if bool then 
         hatchegg4()
-        end
+      end
   end    
 })
-
-eggTab:AddToggle({
-  Name = "auto hatch 28.5b egg",
-  Default = false,
-  Callback = function(bool)
-    getgenv().autoegg5 = bool
-      if bool then 
-        hatchegg5()
-        end
-  end    
-})
-
 mainTab:AddToggle({
   Name = "auto rebirth",
   Default = false,
