@@ -18,7 +18,7 @@ getgenv().keyinput = "string"
 -- Functions
 function makescript()
   destroy()
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/omega24119/running-simulator-update/main/upd%20running%20hub%20added%20rebirth",true))()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/omega24119/running-sim/main/running%20sim",true))()
 end
 
 function keynoti()
