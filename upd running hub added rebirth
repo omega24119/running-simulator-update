@@ -1,344 +1,84 @@
--- existing code
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
--- window
-local Window = OrionLib:MakeWindow({Name = "All universe hub", HidePremium = false, IntroText = "All unniverse hub", SaveConfig = true, ConfigFolder = "OrionTest"})
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "key system", HidePremium = false, SaveConfig = true, IntroText = "key system"})
 
--- tabs
-local mainTab = Window:MakeTab({
-  Name = "farm",
-  Icon = "rbxassetid://4483345998",
-  PremiumOnly = false
-})
-
-local eggTab = Window:MakeTab({
-  Name = "Hatch Eggs",
-  Icon = "rbxassetid://4483345998",
-  PremiumOnly = false
-})
-
-local tpTab = Window:MakeTab({
-  Name = "Teleports",
-  Icon = "rbxassetid://4483345998",
-  PremiumOnly = false
-})
-
--- sections
-local Section = mainTab:AddSection({
-  Name = "farming section!"
-})
-
-local Section = eggTab:AddSection({
-  Name = "Eggs"
-})
-
-local Section = tpTab:AddSection({
-  Name = "teleports"
-})
-
--- values
-getgenv().autokick = false
-getgenv().automoney = false
-getgenv().autoegg1 = false
-getgenv().autoegg2 = false
-getgenv().autoegg3 = false
-getgenv().autoegg4 = false
-getgenv().autoegg5 = false
-getgenv().autorebirth = false
-
--- functions
-function dokick()
-  while getgenv().autokick == true do
-    local args = {
-      [1] = "Click"
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Click:FireServer(unpack(args))
-    task.wait(0.1)
-  end 
-end
-
-function domoney()
-  while getgenv().automoney == true do
-    local args = {
-      [1] = "Collect",
-      [2] = "100"
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Money:FireServer(unpack(args))
-    task.wait(0.1)
-  end
-end
-
-function hatchegg1()
-  while getgenv().autoegg1 == true do
-    local args = {
-      [1] = "Hatch",
-      [2] = 1,
-      [3] = 1,
-      [4] = {}
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Egg:FireServer(unpack(args))
-    task.wait(0.1)
-  end
-end
-
-function hatchegg2()
-  while getgenv().autoegg2 == true do
-    local args = {
-      [1] = "Hatch",
-      [2] = 2,
-      [3] = 1,
-      [4] = {}
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Egg:FireServer(unpack(args))
-    task.wait(0.1)
-  end
-end
-
-function hatchegg3()
-  while getgenv().autoegg3 == true do
-    local args = {
-      [1] = "Hatch",
-      [2] = 3,
-      [3] = 1,
-      [4] = {}
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Egg:FireServer(unpack(args))
-    task.wait(0.1)
-  end
-end
-
-function hatchegg4()
-  while getgenv().autoegg4 == true do
-    local args = {
-      [1] = "Hatch",
-      [2] = 4,
-      [3] = 1,
-      [4] = {}
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Egg:FireServer(unpack(args))
-    task.wait(0.1)
-  end
-end 
-
-function hatchegg5()
-  while getgenv().autoegg5 == true do
-    local args = {
-      [1] = "Hatch",
-      [2] = 5,
-      [3] = 1,
-      [4] = {}
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Egg:FireServer(unpack(args))
-    task.wait(0.1)
-  end
-end
-
-function dorebirth()
-  while getgenv().autorebirth == true do
-    local args = {
-      [1] = "Rebirth"
-    }
-
-    game:GetService("ReplicatedStorage").Remotes.Rebirth:FireServer(unpack(args))
-    task.wait(0.1)
-  end
-end
-
--- notification
+-- Notification
 OrionLib:MakeNotification({
-  Name = "Exeuted!",
-  Content = "join our discord for more scripts!",
+  Name = "Logged in!",
+  Content = "You are logged in as " .. Player.Name .. ".",
   Image = "rbxassetid://4483345998",
   Time = 5
 })
 
--- buttons
-mainTab:AddButton({
-  Name = "claim daily gift!!",
-  Callback = function()
-      local args = {
-        [1] = "Daily"
-      }
+-- Values
+getgenv().key = "ALLUNIVERSEONTOP241109"
+getgenv().keyinput = "string"
 
-      game:GetService("ReplicatedStorage").Remotes.Rewards:FireServer(unpack(args))
-          print("button pressed")
-    end    
+-- Functions
+function makescript()
+  destroy()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/omega24119/running-simulator-update/main/upd%20running%20hub%20added%20rebirth",true))()
+end
+
+function keynoti()
+  OrionLib:MakeNotification({
+    Name = "correct key",
+    Content = "access granted",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+  })
+end
+
+function nokeynoti()
+  OrionLib:MakeNotification({
+    Name = "incorrect key",
+    Content = "no access granted incorrect key",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+  })
+end
+
+function destroy()
+  game:GetService("CoreGui").Orion:Destroy()
+end
+
+-- Tabs
+local Tab = Window:MakeTab({
+  Name = "Key",
+  Icon = "rbxassetid://4483345998",
+  PremiumOnly = false
 })
 
-mainTab:AddButton({
-  Name = "equip best pet!",
-  Callback = function()
-      local args = {
-        [1] = "Best"
-      }
-
-      game:GetService("ReplicatedStorage").Remotes.Inventory:FireServer(unpack(args))
-          print("button pressed")
-    end    
+-- Textbox
+Tab:AddTextbox({
+  Name = "Enter key",
+  Default = "Key here",
+  TextDisappear = true,
+  Callback = function(Value)
+    getgenv().keyinput = Value
+  end
 })
 
-mainTab:AddButton({
-  Name = "infiniteyield(for speed)!",
+-- Buttons
+Tab:AddButton({
+  Name = "check key",
   Callback = function()
-      loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
-          print("button pressed")
-    end    
+    if getgenv().keyinput == getgenv().key then
+      makescript()
+      keynoti()
+    else
+      nokeynoti()
+    end
+  end
 })
 
-mainTab:AddButton({
+local Discord = Tab:AddSection({Name="Join Our Discord To Get Key"});
+
+Discord:AddButton({
   Name = "Copy Discord Link",
   Callback = function()
-      setclipboard("https://discord.gg/88dfBYQk")
+      setclipboard("https://discord.gg/e3zTG6KT")
       print("Discord link copied to clipboard")
   end    
 })
-
--- teleport buttons
-tpTab:AddButton({
-  Name = "teleport to end of the world ur in!",
-  Callback = function()
-      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(101761.82, 25.8693676, -145.287994, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-      wait()
-          print("button pressed")
-    end    
-})
-
-tpTab:AddButton({
-  Name = "teleport to lava world!",
-  Callback = function()
-      local args = {
-        [1] = "Teleport",
-        [2] = 1
-      }
-
-      game:GetService("ReplicatedStorage").Remotes.Teleport:FireServer(unpack(args))
-          print("button pressed")
-    end    
-})
-
-tpTab:AddButton({
-  Name = "teleport to candy world!",
-  Callback = function()
-      local args = {
-        [1] = "Teleport",
-        [2] = 2
-      }
-
-      game:GetService("ReplicatedStorage").Remotes.Teleport:FireServer(unpack(args))
-          print("button pressed")
-    end    
-})
-
-tpTab:AddButton({
-  Name = "teleport to hot world!",
-  Callback = function()
-      local args = {
-        [1] = "Teleport",
-        [2] = 3
-      }
-
-      game:GetService("ReplicatedStorage").Remotes.Teleport:FireServer(unpack(args))
-          print("button pressed")
-    end    
-})
-
-tpTab:AddButton({
-  Name = "teleport to jungle world!",
-  Callback = function()
-      local args = {
-        [1] = "Teleport",
-        [2] = 4
-      }
-
-      game:GetService("ReplicatedStorage").Remotes.Teleport:FireServer(unpack(args))
-          print("button pressed")
-    end    
-})
-
--- farm toggles 
-mainTab:AddToggle({
-  Name = "auto train legs!",
-  Default = false,
-  Callback = function(bool)
-      getgenv().autokick = bool
-      if bool then 
-        dokick()
-      end
-  end    
-})
-
-mainTab:AddToggle({
-  Name = "get 3,000,000 money!(will reset ur power)",
-  Default = false,
-  Callback = function(bool)
-      getgenv().automoney = bool
-      if bool then 
-        domoney()
-      end
-  end    
-})
-
--- egg toggles
-eggTab:AddToggle({
-  Name = "auto hatch 2k egg",
-  Default = false,
-  Callback = function(bool)
-      getgenv().autoegg1 = bool
-      if bool then 
-        hatchegg1()
-      end
-  end    
-})
-
-eggTab:AddToggle({
-  Name = "auto hatch 250k egg",
-  Default = false,
-  Callback = function(bool)
-      getgenv().autoegg2 = bool
-      if bool then 
-        hatchegg2()
-      end
-  end    
-})
-
-eggTab:AddToggle({
-  Name = "auto hatch 10m egg",
-  Default = false,
-  Callback = function(bool)
-      getgenv().autoegg3 = bool
-      if bool then 
-        hatchegg3()
-      end
-  end    
-})
-
-eggTab:AddToggle({
-  Name = "auto hatch 1.4b egg",
-  Default = false,
-  Callback = function(bool)
-      getgenv().autoegg4 = bool
-      if bool then 
-        hatchegg4()
-      end
-  end    
-})
-mainTab:AddToggle({
-  Name = "auto rebirth",
-  Default = false,
-  Callback = function(bool)
-    getgenv().autorebirth = bool
-      if bool then 
-        dorebirth()
-        end
-  end    
-})
-
-
-OrionLib:Init()
