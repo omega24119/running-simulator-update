@@ -76,9 +76,17 @@ Tab:AddButton({
 local Discord = Tab:AddSection({Name="Join Our Discord To Get Key"});
 
 Discord:AddButton({
-  Name = "Copy Discord Link",
+  Name = "Copy key Link(linkvertise)",
   Callback = function()
-      setclipboard("https://discord.gg/e3zTG6KT")
+      setclipboard("https://link-center.net/1179336/get-all-universe-hub-key")
+      print("Discord link copied to clipboard")
+  end    
+})
+
+Discord:AddButton({
+  Name = "Copy key Link(lootlab)",
+  Callback = function()
+      setclipboard("https://loot-link.com/s?JqSm")
       print("Discord link copied to clipboard")
   end    
 })
